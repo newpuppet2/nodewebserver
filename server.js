@@ -3,6 +3,7 @@ const hbs = require('hbs');
 const fs = require('fs');
 
 var app = express();
+const port = process.env.PORT || 3000;
 app.set('view engine', 'hbs');
 
 hbs.registerPartials(__dirname + '/views/Partials');
@@ -56,4 +57,6 @@ app.get('/bad', (req, res) => {
 res.send({errorMessage:'unable to handle requests'});
 });
 
-app.listen(3000);
+app.listen(port, () => {
+console.log(`running on ${port}`);
+});
